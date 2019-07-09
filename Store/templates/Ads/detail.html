@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Ad Details</h1>
+
+<p>Title: {{object.title}}</p>
+<p>Code: {{object.code}}</p>
+<p>Price: {{object.price}}</p>
+<p>Off: {{object.off}}</p>
+<p>DateRegister: {{object.date_register}}</p>
+<p>DatePublish: {{object.date_publish}}</p>
+<p>DateExpire: {{object.date_rxpire}}</p>
+<p>IsSpecial: {{object.is_special}}</p>
+
+
+{% endblock %}

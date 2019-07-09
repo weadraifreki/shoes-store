@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>Shoes Store</title>
+  {% load staticfiles %}
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container flex-row">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-2 flex-fill">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBooksCourses" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="fa fa-graduation-cap"></span> مشاهده اطلاعات
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownBooksCourses">
+                <a class="dropdown-item" href="/">آگهی های ویژه من</a>
+                <a class="dropdown-item" href="/">خرید های من</a>
+                <a class="dropdown-item border-top" href="/">پروفایل من »</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 mr-2 flex-fill" action="/search" method="GET">
+            <input class="search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" type="search"
+              placeholder="Search&hellip;" aria-label="Search" name="q">
+          </form>
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item form-inline">
+              Hi {{ user.username }}!
+              <a href="{% url 'logout' %}">logout</a>
+            </li>
+            {% else %}
+            <!-- <p>You are not logged in</p> -->
+            <li class="nav-item form-inline">
+              <a class="btn btn-sm btn-primary px-3" href="/accounts/join/">Join</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-item" href="/accounts/login/">Sign In</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+    </nav>-->
+    
+  </header>
+  <main>
+    <div class="content container">
+      {% block page_content %}
+      {% endblock %}
+    </div>
+  </main>
+  <footer>
+
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  {% block javascript %}{% endblock %}
+</body>
+
+</html>

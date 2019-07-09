@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<h1>آگهی ها</h1>
+<div class="row">
+    {% for ad in ads %}
+        <div class="col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" src="{% get_media_prefix %}{{ ad.shoe.picture_set.all.0.image }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ad.title }}</h5>
+                        <p class="card-text">{{ ad.description }}</p>
+                        <p class="card-text">{{ ad.shoe.type }}</p>
+                        <p class="card-text">{{ ad.price }}</p>
+                        <a href="{% url 'ads-detail' ad.pk %}" class="btn btn-primary">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

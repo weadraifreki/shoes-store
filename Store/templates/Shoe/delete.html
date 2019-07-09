@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Ad Delete?</h1>
+<form  method="post">
+{% csrf_token %}
+<p>Are you sure you want to delete "{{ object }}"?</p>
+Are you sure you want to delete this Ad?
+<input  type="submit"  value="Submit"  />
+</form>
+{% endblock %}

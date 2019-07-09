@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<h1>آگهی ها</h1>
+
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Code</th>
+<th>Price</th>
+<th>Off</th>
+<th>DatePublish</th>
+<th>DateExpire</th>
+<th>IsSpecial</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for ad in ads %}
+<tr>
+<td>{{ ad.Title }}</td>
+<td>{{ ad.Code }}</td>
+<td>{{ ad.Price  }}</td>
+<td>{{ ad.Off  }}</td>
+<td>{{ ad.DatePublish  }}</td>
+<td>{{ ad.DateExpire  }}</td>
+<td>{{ ad.IsSpecial  }}</td>
+<td>
+<a  href="{{ad.id}}">details</a>
+<a  href="{{ad.id}}">edit</a>
+<a  href="{% url "ads-delete"  ad.id  %}">delete</a>
+</td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content container">
+        <div class="row">
+            <div class="invalid-feedback">
+                {% for item in errors %}
+                <li>
+                    {{item}}
+                </li>
+                {% endfor %}
+            </div>
+            <div class="col-md-8  form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        {{ form.Code.errors }}
+                        <label for="{{ form.Code.id_for_label }}">کد آگهی:</label>
+                        {{form.Code}}
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        {{ form.Title.errors }}
+                        <label for="{{ form.Tilte.id_for_label }}">عنوان آگهی:</label>
+                        {{form.Title}}
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        {{ form.Price.errors }}
+                        <label for="{{ form.Price.id_for_label }}">قیمت:</label>
+                        {{form.Price}}
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        {{ form.Off.errors }}
+                        <label for="{{ form.Off.id_for_label }}">تخفیف به ریال:</label>
+                        {{form.Off}}
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        {{ form.DatePublish.errors }}
+                        <label for="{{ form.DatePublish.id_for_label }}">تاریخ انتشار آگهی</label>
+                        <!-- <div class="container">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-group date" id="datetimepicker12" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker12"/>
+                                            <div class="input-group-append" data-target="#datetimepicker12" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker12').datetimepicker({
+                                            daysOfWeekDisabled: [0, 6]
+                                        });
+                                    });
+                                </script>
+                            </div> -->
+                        {{form.DatePublish}}
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        {{ form.DateExpire.errors }}
+                        <label for="{{ form.DateExpire.id_for_label }}">تاریخ انقضای آگهی</label>
+                        {{form.DateExpire}}
+                    </div>
+                    <br />
+                    <div class="form-control">
+                        {{ form.IsSpecial.errors }}
+                        <label for="{{ form.IsSpecial.id_for_label }}">آیا آگهی ویژه می باشد؟</label>
+                        {{form.IsSpecial}}
+                    </div>
+                    <br />
+                    <div>
+                        {{ form.Description.errors }}
+                        <label for="{{ form.Description.id_for_label }}">توضیحات تکمیلی:</label>
+                        {{form.Description}}
+                    </div>
+                    <br />
+                    <div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

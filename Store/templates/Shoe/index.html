@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<h1>آگهی ها</h1>
+<div class="row">
+    {% for shoe in shoes %}
+        <div class="col-md-3">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static './us.jpg' %}">
+            <h5 class="card-title">{{ shoe.Name }}</h5>
+            <p class="card-text">{{ shoe.Code }}</p>
+            <p class="card-text">{{ shoe.PriceSell }}</p>
+            <p class="card-text">{{ shoe.PriceBuy }}</p>
+            <p class="card-text">{{ shoe.DateBuy }}</p>
+            <p class="card-text">{{ shoe.IsDeleted }}</p>
+            <p class="card-text">{{ shoe.IsActive }}</p>
+            <p class="card-text">{{ shoe.NumberBuy }}</p>
+            <p class="card-text">{{ shoe.NumberLeft }}</p>
+
+            <a href="{{shoe.id}}">details</a>
+            <a href="{{shoe.id}}">edit</a>
+            <a href="{% url "ads-delete"  shoe.id  %}">delete</a>
+            <a href="{% url 'ads-detail' shoe.pk %}" class="btn btn-primary">
+                Read More
+            </a>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
