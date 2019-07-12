@@ -86,72 +86,10 @@
                 <br />
             </div>
             <div class="col-md-8">
-                <form method="POST">
+                <form  method="post">
                     {% csrf_token %}
-                    <div>
-                        {{form.Id}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.Code.errors }}
-                        <label for="{{ form.Code.id_for_label }}">کد کفش:</label>
-                        {{form.Code}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.Name.errors }}
-                        <label for="{{ form.Name.id_for_label }}">اسم کفش :</label>
-                        {{form.Name}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.PriceSell.errors }}
-                        <label for="{{ form.PriceSell.id_for_label }}">قیمت فروش:</label>
-                        {{form.PriceSell}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.PriceBuy.errors }}
-                        <label for="{{ form.PriceBuy.id_for_label }}">قیمت خرید :</label>
-                        {{form.PriceBuy}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.DateBuy.errors }}
-                        <label for="{{ form.DateBuy.id_for_label }}">تاریخ خرید کفش:</label>
-                        {{form.DateBuy}}
-
-                    </div>
-                    <br />
-                    <!-- <div class="form-control">
-                        {{ form.IsDeleted.errors }}
-                        <label for="{{ form.IsDeleted.id_for_label }}">آیا کفش حذف شده می باشد؟</label>
-                        {{form.IsDeleted}}
-                    </div>
-                    <br /> -->
-                    <div class="form-control">
-                        {{ form.IsActive.errors }}
-                        <label for="{{ form.IsActive.id_for_label }}">آیا کفش برای آگهی فعال باشد؟</label>
-                        {{form.IsActive}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.NumberBuy.errors }}
-                        <label for="{{ form.NumberBuy.id_for_label }}">تعداد خریداری شده:</label>
-                        {{form.NumberBuy}}
-                    </div>
-                    <br />
-                    <div class="form-control">
-                        {{ form.NumberLeft.errors }}
-                        <label for="{{ form.NumberLeft.id_for_label }}">تعداد باقیمانده:</label>
-                        {{form.NumberLeft}}
-                    </div>
-                    <br />
-                    <div>
-                            <!-- <input  type="submit" class="btn btn-primary" value="Submit"  /> -->
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                    <br />
+                    {{ form.as_p }}
+                    <input  type="submit"  value="Submit"  />
                 </form>
             </div>
         </div>
@@ -181,12 +119,8 @@
             var file = document.getElementById("file-uploader-attach").files[0]; //file
             // var token = document.getElementsByName("csrfmiddlewaretoken").prop("value");
             var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
-            var shoe_id = $('input[name="Id"]').prop('value');
-            var cnt = $("#picture-count").text()
             // console.log(token);
             formData.append("myfile", file); //Added file to our form
-            formData.append("shoe_id", shoe_id)
-            formData.append("picture_count", cnt)
             // formData.append('csrfmiddlewaretoken', token);
 
             $.ajax({
@@ -206,9 +140,7 @@
                 },
                 success: function (data) {
                     if (data["result"] == true) {
-                        $('input[name="Id"]').val(data["shoe_id"]);
-                        $("#picture-count").text(parseInt(cnt)+1)
-
+                        console.log("picture added")
                     }
                     // data = data;
                     $btn = $("#btn-upload-attach");

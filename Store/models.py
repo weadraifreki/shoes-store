@@ -33,7 +33,7 @@ class Shoe(models.Model):
     price_buy = models.FloatField()
     date_buy = models.DateTimeField(default=timezone.now)
     is_deleted = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     number_buy = models.IntegerField()
     number_left = models.IntegerField()
     categories = models.ManyToManyField(Category)

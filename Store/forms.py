@@ -2,9 +2,14 @@ from django import forms
 from django.utils import timezone
 from django.contrib.admin import widgets
 from datetime import datetime
-from .models import Category, Size, AdSize
+from .models import Category, Size, AdSize, Shoe, Ad
 
-class AdForm(forms.Form):
+class AdForm(forms.ModelForm):
+    class Meta:
+        Model = Ad
+        exclude = ('date_register',)
+
+
     Code = forms.CharField(label="کد آگهی", max_length=100, required=True)
     Title = forms.CharField(label="عنوان آگهی", max_length=300, required=True)
     Price = forms.FloatField(label="قیمت", min_value=0, required=True)
@@ -16,18 +21,10 @@ class AdForm(forms.Form):
     IsSpecial = forms.BooleanField(label="آگهی ویژه")
     Description = forms.CharField(label="توضیحات", widget=forms.Textarea)
 
-class ShoeForm(forms.Form):
-    Id = forms.IntegerField(widget=forms.HiddenInput())
-    Code = forms.CharField(max_length=100)
-    Name = forms.CharField(max_length=250)
-    PriceSell = forms.FloatField(min_value=0)
-    PriceBuy = forms.FloatField(min_value=0)
-    DateBuy = forms.DateTimeField(label="تاریخ خرید",input_formats=['%Y-%m-%d %H:%M:%S'], initial=datetime.now)
-    # IsDeleted = forms.BooleanField()
-    IsActive = forms.BooleanField()
-    NumberBuy = forms.IntegerField(min_value=0,)
-    NumberLeft = forms.IntegerField(min_value=0,)
-    # Images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+class ShoeForm(forms.ModelForm):
+    class Meta:
+        model = Shoe
+        exclude = ('is_deleted', 'is_active')
 
 class CategoryForm(forms.ModelForm):
     class Meta:

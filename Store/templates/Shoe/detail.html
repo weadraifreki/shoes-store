@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<h1>Ad Details</h1>
+<h1>Shoe Details</h1>
 
-<p>Title: {{object.Title}}</p>
-<p>Code: {{object.Code}}</p>
-<p>Price: {{object.Price}}</p>
-<p>Off: {{object.Off}}</p>
-<p>DateRegister: {{object.DateRegister}}</p>
-<p>DatePublish: {{object.DatePublish}}</p>
-<p>DateExpire: {{object.DateExpire}}</p>
-<p>IsSpecial: {{object.IsSpecial}}</p>
+<p>Name: {{object.name}}</p>
+<p>Code: {{object.code}}</p>
+<p>Price Sell: {{object.price_sell}}</p>
+<p>Price Buy: {{object.price_buy}}</p>
+<p>Buy Date: {{object.date_buy}}</p>
+<p>Number Buy: {{object.number_buy}}</p>
+<p>Number Left: {{object.number_left}}</p>
 
 
 {% endblock %}
